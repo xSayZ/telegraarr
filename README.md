@@ -1,7 +1,5 @@
 # Telegraarr 🤖
 
-![Telegraarr icon](assets/icon.png)
-
 A Telegram bot for your \*arr stack. Query requests, check downloads, and search your library - all from Telegram.
 
 Built because I wanted a quick and fun way to let friends and family know what's downloading and what's available on my home server without giving everyone access to Jellyseerr or Sonarr.
@@ -34,7 +32,7 @@ Admin commands:
 
 ## Image
 ```bash
-docker pull ghcr.io/<your-username>/telegraarr:latest
+docker pull ghcr.io/xsayz/telegraarr:latest
 ```
 
 ---
