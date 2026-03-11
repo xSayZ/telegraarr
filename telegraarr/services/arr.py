@@ -1,5 +1,5 @@
 import httpx
-from config import (
+from telegraarr.config import (
     SONARR_URL, SONARR_API_KEY,
     SONARR_ANIME_URL, SONARR_ANIME_API_KEY,
     RADARR_URL, RADARR_API_KEY,

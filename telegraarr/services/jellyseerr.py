@@ -1,5 +1,5 @@
 import httpx
-from config import JELLYSEERR_URL, JELLYSEERR_API_KEY
+from telegraarr.config import JELLYSEERR_URL, JELLYSEERR_API_KEY
 
 HEADERS = {"X-Api-Key": JELLYSEERR_API_KEY}
 

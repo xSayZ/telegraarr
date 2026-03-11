@@ -1,5 +1,5 @@
 import httpx
-from config import JELLYFIN_URL, JELLYFIN_API_KEY
+from telegraarr.config import JELLYFIN_URL, JELLYFIN_API_KEY
 
 HEADERS = {"Authorization": f'MediaBrowser Token="{JELLYFIN_API_KEY}"'}
 
