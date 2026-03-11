@@ -3,9 +3,7 @@ from telegraarr.config import JELLYFIN_URL, JELLYFIN_API_KEY
 
 HEADERS = {"Authorization": f'MediaBrowser Token="{JELLYFIN_API_KEY}"'}
 
-
 async def search_library(query: str) -> list[dict]:
-    """Search Jellyfin library for movies and series."""
     async with httpx.AsyncClient() as client:
         r = await client.get(
             f"{JELLYFIN_URL}/Items",
@@ -14,7 +12,7 @@ async def search_library(query: str) -> list[dict]:
                 "searchTerm": query,
                 "Recursive": True,
                 "IncludeItemTypes": "Movie,Series",
-                "Fields": "ProductionYear,Overview",
+                "Fields": "ProductionYear,Overview,RecursiveItemCount",
                 "Limit": 5,
             },
             timeout=10,
@@ -24,10 +22,18 @@ async def search_library(query: str) -> list[dict]:
 
 
 async def get_recently_added(limit: int = 5) -> list[dict]:
-    """Get recently added items across the library."""
     async with httpx.AsyncClient() as client:
+        # First get the admin user ID
+        users = await client.get(
+            f"{JELLYFIN_URL}/Users",
+            headers=HEADERS,
+            timeout=10,
+        )
+        users.raise_for_status()
+        user_id = users.json()[0]["Id"]
+
         r = await client.get(
-            f"{JELLYFIN_URL}/Items/Latest",
+            f"{JELLYFIN_URL}/Users/{user_id}/Items/Latest",
             headers=HEADERS,
             params={
                 "Limit": limit,

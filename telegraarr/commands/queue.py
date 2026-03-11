@@ -65,8 +65,19 @@ async def queue_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         for item in items
     ]
 
+    # Filter by query if provided
+    if context.args:
+        query = " ".join(context.args).lower()
+        all_items = [
+            (item, source) for item, source in all_items
+            if query in item.get("title", "").lower()
+        ]
+
     if not all_items:
-        await update.message.reply_text("✅ Nothing currently downloading.")
+        if context.args:
+            await update.message.reply_text(f'❌ Nothing in the queue matching "{" ".join(context.args)}".')
+        else:
+            await update.message.reply_text("✅ Nothing currently downloading.")
         return
 
     stalled = sum(
@@ -82,4 +93,8 @@ async def queue_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     for item, source in all_items:
         lines.append(_format_item(item, source))
 
-    await update.message.reply_text("\n".join(lines), parse_mode="Markdown")
+    message = "\n".join(lines)
+    if len(message) > 4096:
+        message = message[:4000] + "\n\n... queue truncated."
+
+    await update.message.reply_text(message, parse_mode="Markdown")

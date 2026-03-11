@@ -34,7 +34,7 @@ async def post_init(application):
         BotCommand("start", "Introduction and your Telegram ID"),
         BotCommand("register", "Request access with your Jellyseerr email"),
         BotCommand("requests", "Search requests by title"),
-        BotCommand("queue", "View active downloads"),
+        BotCommand("queue", "View active downloads, optionally filter by title"),
         BotCommand("available", "Check if a title is in the library"),
         BotCommand("status", "Server overview"),
     ])

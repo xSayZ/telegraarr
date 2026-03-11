@@ -43,11 +43,16 @@ async def available_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         year = item.get("ProductionYear", "")
         overview = item.get("Overview", "")
 
-        # Truncate overview if present
         if overview and len(overview) > 100:
             overview = overview[:97] + "..."
 
         line = f"{itype} *{name}*{f' ({year})' if year else ''} ✅"
+
+        # Show episode count for series
+        if item.get("Type") == "Series":
+            episode_count = item.get("RecursiveItemCount", 0)
+            line += f" — {episode_count} episodes"
+
         if overview:
             line += f"\n    _{overview}_"
 
