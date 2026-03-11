@@ -2,14 +2,14 @@ import logging
 from telegram import Update, BotCommand
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-from config import BOT_TOKEN
-from database import init_db
-from commands.register import register_command
-from commands.admin import approve_command, deny_command, unblock_command
-from commands.requests import requests_command
-from commands.queue import queue_command
-from commands.available import available_command
-from commands.status import status_command
+from telegraarr.config import BOT_TOKEN
+from telegraarr.database import init_db
+from telegraarr.commands.register import register_command
+from telegraarr.commands.admin import approve_command, deny_command, unblock_command
+from telegraarr.commands.requests import requests_command
+from telegraarr.commands.queue import queue_command
+from telegraarr.commands.available import available_command
+from telegraarr.commands.status import status_command
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
