@@ -1,6 +1,6 @@
 # Contributing to Telegraarr
 
-First of all — thank you for even considering contributing. This project started as a fun vibe-coded weekend thing and I'd love to see it grow beyond just my use case.
+First of all - thank you for even considering contributing. This project started as a fun vibe-coded weekend thing and I'd love to see it grow beyond just my use case.
 
 There are no strict rules here. If you want to contribute, just do it. That said, here are some loose guidelines to make things smoother for everyone.
 
@@ -18,14 +18,14 @@ This is a homelab tool. The people using it are running their own servers, manag
 
 ## Ways to contribute
 
-- **Bug reports** — something broken? Open an issue. The more detail the better — what happened, what you expected, what your setup looks like
-- **Feature requests** — have an idea? Open an issue and describe what you want and why. No need to implement it yourself
-- **Bug fixes** — spot a bug and know how to fix it? Just open a PR
-- **New features** — want to add something? Open an issue first so we can discuss before you spend time on it
-- **Documentation** — README unclear? Setup steps wrong? Fix it. Docs PRs are always welcome
-- **New service integrations** — running Prowlarr, Bazarr, Lidarr, or something else? Adding support is very welcome
-- **Tests** — there are none right now. If you want to add them, please do
-- **Code cleanup** — see something that could be simpler or cleaner? Go for it
+- **Bug reports** - something broken? Open an issue. The more detail the better - what happened, what you expected, what your setup looks like
+- **Feature requests** - have an idea? Open an issue and describe what you want and why. No need to implement it yourself
+- **Bug fixes** - spot a bug and know how to fix it? Just open a PR
+- **New features** - want to add something? Open an issue first so we can discuss before you spend time on it
+- **Documentation** - README unclear? Setup steps wrong? Fix it. Docs PRs are always welcome
+- **New service integrations** - running Prowlarr, Bazarr, Lidarr, or something else? Adding support is very welcome
+- **Tests** - there are none right now. If you want to add them, please do
+- **Code cleanup** - see something that could be simpler or cleaner? Go for it
 
 ---
 
@@ -63,10 +63,10 @@ python -m telegraarr.bot
 
 ## Pull requests
 
-- Keep PRs focused — one thing per PR is easier to review
+- Keep PRs focused - one thing per PR is easier to review
 - Write a clear description of what you changed and why
 - If your PR fixes an issue, reference it with `Fixes #123`
-- Don't worry about a perfect commit history — squashing is fine
+- Don't worry about a perfect commit history - squashing is fine
 
 ---
 
