@@ -1,7 +1,12 @@
+import logging
+
 from telegram import Update
 from telegram.ext import ContextTypes
+from telegram.helpers import escape_markdown
 from telegraarr.auth import require_auth
 from telegraarr.services.arr import get_all_queues
+
+logger = logging.getLogger(__name__)
 
 
 def _format_size(bytes: float) -> str:
@@ -25,7 +30,7 @@ def _format_progress(item: dict) -> str:
 
 
 def _format_item(item: dict, source: str) -> str:
-    title = item.get("title", "Unknown")
+    title = escape_markdown(item.get("title", "Unknown"), version=1)
     status = item.get("status", "").lower()
     tracked = item.get("trackedDownloadStatus", "").lower()
     tracked_state = item.get("trackedDownloadState", "").lower()
@@ -68,6 +73,8 @@ async def queue_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Filter by query if provided
     if context.args:
         query = " ".join(context.args).lower()
+        logger.info(f"Queue filter query: '{query}'")
+        logger.info(f"Queue titles: {[item.get('title', '').lower() for item, _ in all_items]}")
         all_items = [
             (item, source) for item, source in all_items
             if query in item.get("title", "").lower()
