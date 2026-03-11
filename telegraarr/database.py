@@ -118,7 +118,7 @@ async def add_failed_attempt(telegram_id: int, telegram_name: str, attempted_ema
 async def is_blocked(telegram_id: int) -> bool:
     async with aiosqlite.connect(DB_PATH) as db:
         async with db.execute(
-            "SELECT blocked FROM blocked_users WHERE telegram_id = ?", (telegram_id,)
+            "SELECT telegram_id FROM blocked_users WHERE telegram_id = ?", (telegram_id,)
         ) as cursor:
             row = await cursor.fetchone()
             return bool(row) if row else False
