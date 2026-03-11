@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from auth import require_auth
-from services.jellyfin import search_library
+from telegraarr.auth import require_auth
+from telegraarr.services.jellyfin import search_library
 
 
 ITEM_TYPE_MAP = {

@@ -1,8 +1,8 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from config import ADMIN_TELEGRAM_ID
-from database import add_pending, get_pending, get_failed_attempts, add_failed_attempt, is_blocked, block_user
-from services.jellyseerr import get_user_by_email
+from telegraarr.config import ADMIN_TELEGRAM_ID
+from telegraarr.database import add_pending, get_pending, get_failed_attempts, add_failed_attempt, is_blocked, block_user
+from telegraarr.services.jellyseerr import get_user_by_email
 
 MAX_FAILED_ATTEMPTS = 5
 

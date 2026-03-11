@@ -1,9 +1,9 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from auth import require_auth
-from services.arr import get_all_queues, get_disk_space
-from services.jellyseerr import get_request_counts
-from services.jellyfin import get_recently_added, get_library_stats
+from telegraarr.auth import require_auth
+from telegraarr.services.arr import get_all_queues, get_disk_space
+from telegraarr.services.jellyseerr import get_request_counts
+from telegraarr.services.jellyfin import get_recently_added, get_library_stats
 
 
 def _format_disk(disks: list[dict]) -> str:

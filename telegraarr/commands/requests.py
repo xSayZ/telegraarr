@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from auth import require_auth
-from services.jellyseerr import search_requests
+from telegraarr.auth import require_auth
+from telegraarr.services.jellyseerr import search_requests
 
 STATUS_MAP = {
     1: "⏳ Pending",

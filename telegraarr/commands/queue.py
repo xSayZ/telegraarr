@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from auth import require_auth
-from services.arr import get_all_queues
+from telegraarr.auth import require_auth
+from telegraarr.services.arr import get_all_queues
 
 
 def _format_size(bytes: float) -> str:

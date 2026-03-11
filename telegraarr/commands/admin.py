@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from auth import require_admin
-from database import approve_user, deny_user, unblock_user, get_pending
+from telegraarr.auth import require_admin
+from telegraarr.database import approve_user, deny_user, unblock_user, get_pending
 
 
 @require_admin
