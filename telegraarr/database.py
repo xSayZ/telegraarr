@@ -1,6 +1,5 @@
 import aiosqlite
-from config import DB_PATH
-
+from telegraarr.config import DB_PATH
 
 async def init_db():
     async with aiosqlite.connect(DB_PATH) as db:
