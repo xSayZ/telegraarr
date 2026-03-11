@@ -1,13 +1,9 @@
-import logging
 
 from telegram import Update
 from telegram.ext import ContextTypes
 from telegram.helpers import escape_markdown
 from telegraarr.auth import require_auth
 from telegraarr.services.arr import get_all_queues
-
-logger = logging.getLogger(__name__)
-
 
 def _format_size(bytes: float) -> str:
     gb = bytes / (1024 ** 3)
@@ -73,11 +69,11 @@ async def queue_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Filter by query if provided
     if context.args:
         query = " ".join(context.args).lower()
-        logger.info(f"Queue filter query: '{query}'")
-        logger.info(f"Queue titles: {[item.get('title', '').lower() for item, _ in all_items]}")
         all_items = [
             (item, source) for item, source in all_items
             if query in item.get("title", "").lower()
+            or query in (item.get("series", {}) or {}).get("title", "").lower()
+            or query in (item.get("movie", {}) or {}).get("title", "").lower()
         ]
 
     if not all_items:
@@ -102,6 +98,9 @@ async def queue_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     message = "\n".join(lines)
     if len(message) > 4096:
-        message = message[:4000] + "\n\n... queue truncated."
+        message = message[:4000]
+        # Strip any incomplete last line to avoid broken Markdown
+        message = message.rsplit("\n", 1)[0]
+        message += "\n\n... queue truncated."
 
     await update.message.reply_text(message, parse_mode="Markdown")
